@@ -1,0 +1,10 @@
+node_modules
+test-results
+videos
+test-run-config.js
+*.xml
+.DS_Store
+/test-results/
+/playwright-report/
+/playwright/.cache/
+screenshot.png

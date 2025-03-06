@@ -1,0 +1,25 @@
+{
+  "name": "sdet-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "playwright.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^11.1.0",
+    "@types/node": "^22.9.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "allure-playwright": "^3.0.6"
+  }
+}
