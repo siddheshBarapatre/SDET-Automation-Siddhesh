@@ -1,12 +1,10 @@
 import { expect, Page } from "@playwright/test";
 
-export class submitApplicationPage {
-
+export class SubmitApplicationPage {
     [x: string]: any;
     page: Page;
 
     constructor(page: Page) {
-
         this.page = page
         this.completeApplicationLink = page.locator('[aria-label="View Application"]');
         this.editExtracurricularButton = page.locator('//span[contains(@class, "mantine-Text-root") and text()="Extracurricular Activities"]/ancestor::div[contains(@class, "mantine-Group-root")]//a[contains(@class, "mantine-Button-root") and contains(.,"Edit")]');
@@ -16,17 +14,17 @@ export class submitApplicationPage {
         this.submitFinalBtn = page.locator('//*[text()="Submit"]');
     }
 
-    async completeTheApplication() {
+    async submitApplicationForm() {
         await this.completeApplicationLink.first().click();
     }
 
-    async submitTheApplicationButton() {
+    async reviewApplication() {
         const currentUrl = this.page.url();
         console.log("Current URL: ", currentUrl);
         await this.submitFinalBtn.click();
     }
 
-    async editButtonNotVisible() {
+    async verifySubmissionSuccess() {
         await expect(this.editExtracurricularButton).not.toBeVisible();
         await expect(this.editHighSchoolInfo).not.toBeVisible();
         await expect(this.editEssayButton).not.toBeVisible();

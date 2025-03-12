@@ -2,5 +2,8 @@
   "dependencies": {
     "@playwright/test": "^1.50.1",
     "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10"
   }
 }

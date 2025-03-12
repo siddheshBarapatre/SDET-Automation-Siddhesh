@@ -1,12 +1,11 @@
 import { expect, Page } from "@playwright/test";
 
-export class essayPage {
+export class EssayPage {
 
     [x: string]: any;
     page: Page;
 
     constructor(page: Page) {
-
         this.page = page
         this.editHighSchoolInfoPara = page.locator('//span[contains(@class, "mantine-Text-root") and text()="High School Information"]/ancestor::div[contains(@class, "mantine-Group-root")]//a[contains(@class, "mantine-Button-root") and contains(.,"Edit")]/following-sibling::p');
         this.editEssayButton = page.locator('//span[contains(@class, "mantine-Text-root") and text()="Essay"]/ancestor::div[contains(@class, "mantine-Group-root")]//a[contains(@class, "mantine-Button-root") and contains(.,"Edit")]');
@@ -16,12 +15,18 @@ export class essayPage {
         this.nextPageButton = page.locator('.mantine-Button-label:has-text("Next Page")');
     }
 
-    async clickNextPageButton() {
+    async submitEssayForm() {
         await this.nextPageButton.click();
         await this.nextPageButton.waitFor({ state: 'hidden' });
+        const highSchoolCountText = await this.editHighSchoolInfoPara.textContent();
+        const essayButtonCountText = await this.editEssayButtonPara.textContent();
+        const highSchoolCount = parseInt(highSchoolCountText, 10);
+        const essayButtonCount = parseInt(essayButtonCountText, 10);
+        expect(highSchoolCount).toBeGreaterThan(1);
+        expect(essayButtonCount).toBeGreaterThan(1);
     }
 
-    async editEssayButtonToUpdateInfo() {
+    async editEssay() {
         await this.editEssayButton.click();
     }
 
@@ -72,14 +77,5 @@ export class essayPage {
         await checkboxForAnimal.check();
         await this.page.waitForTimeout(1000);
         await this.saveButton.click();
-    }
-
-    async validateResponseCount() {
-        const highSchoolCountText = await this.editHighSchoolInfoPara.textContent();
-        const essayButtonCountText = await this.editEssayButtonPara.textContent();
-        const highSchoolCount = parseInt(highSchoolCountText, 10);
-        const essayButtonCount = parseInt(essayButtonCountText, 10);
-        expect(highSchoolCount).toBeGreaterThan(1);
-        expect(essayButtonCount).toBeGreaterThan(1);
     }
 }
