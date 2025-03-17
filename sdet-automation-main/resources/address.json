@@ -1,9 +1,0 @@
-{
-    "user1": {
-        "streetAddress": "123 Main St",
-        "state": "California",
-        "city": "Los Angeles",
-        "zipCode": "90001",
-        "country": "United States"
-    }
-}

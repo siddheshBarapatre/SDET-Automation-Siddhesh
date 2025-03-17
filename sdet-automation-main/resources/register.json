@@ -2,6 +2,11 @@
     "user1": {
         "firstName": "Siddhesh",
         "lastName": "Barapatre",
-        "phoneInput": "9876543210"
+        "phoneInput": "9876543210",
+        "streetAddress": "123 Main St",
+        "state": "California",
+        "city": "Los Angeles",
+        "zipCode": "90001",
+        "country": "United States"
     }
 }

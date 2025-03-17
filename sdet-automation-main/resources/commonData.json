@@ -1,4 +1,55 @@
 {
     "applicationPageUrl": "https://apply.mykaleidoscope.com/program/sdet-test-scholarship",
-    "password": "m1K@82d97y"
+    "password": "m1K@82d97y",
+    "newUser": {
+        "firstName": "Siddhesh",
+        "lastName": "Barapatre",
+        "phoneInput": "9876543210",
+        "streetAddress": "123 Main St",
+        "state": "California",
+        "city": "Los Angeles",
+        "zipCode": "90001",
+        "country": "United States"
+    },
+    "extracurricularActivities": [
+        {
+            "activityName": "Student Government",
+            "years": "4",
+            "leadership": "Class President, Secretary",
+            "description": "Organized and led weekly meetings, managed budgets, coordinated school-wide events such as fundraisers and student elections, and advocated for student needs in administrative meetings."
+        },
+        {
+            "activityName": "Debate Club",
+            "years": "2",
+            "leadership": "Team Captain, Event Organizer",
+            "description": "Prepared and delivered arguments for competitive debates, mentored new members, organized interschool debate competitions, and maintained the club’s schedule and resources."
+        },
+        {
+            "activityName": "Varsity Soccer Team",
+            "years": "4",
+            "leadership": "Team Captain",
+            "description": "Led team practices, strategized game plans with coaches, motivated teammates during high-pressure matches, and represented the team at local sports conferences."
+        },
+        {
+            "activityName": "National Honor Society",
+            "years": "3",
+            "leadership": "Community Service Chair",
+            "description": "Planned and executed community service projects, such as food drives and charity events, managed volunteer schedules, and promoted service initiatives within the school community."
+        }
+    ],
+    "school": {
+        "name": "Greenwood High School",
+        "address": "123 Oak Street",
+        "city": "Greenville",
+        "state": "California",
+        "zipcode": "90210",
+        "gpa": "3",
+        "year": "2023"
+    },
+    "essays": {
+        "animal": "Animals",
+        "school": "School",
+        "essayAboutAnimals": "Animals are the most adorable and loving creatures existing on Earth. They might not be able to speak, but they can understand. They have a unique mode of interaction which is beyond human understanding.",
+        "essayAboutSchool": "A school is the educational institution (and, in the case of in-person learning, the building) designed to provide learning environments for the teaching of students, usually under the direction of teachers."
+    }
 }
