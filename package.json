@@ -5,8 +5,5 @@
   },
   "devDependencies": {
     "@types/node": "^22.13.10"
-  },
-  "scripts": {
-    "test": "playwright test --viewport-size=1310,700"
   }
 }
