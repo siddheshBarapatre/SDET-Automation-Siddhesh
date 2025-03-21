@@ -1,14 +1,11 @@
 import { expect, Page } from "@playwright/test";
 
-export class CommonMethodsPage {
+export class ApplicationPage {
     [x: string]: any;
     page: Page;
 
     constructor(page: Page) {
         this.page = page;
-        this.loginToApplyButton = page.locator('#sign-in');
-        this.nextButton = page.locator('#login-page__cta');
-        this.querySelector = (label: string) => page.locator(`[aria-label="${label}"]`);
         this.typeSelector = (type: any) => page.locator(`[type="${type}"]`);
         this.textOption = (text: any) => page.locator(`span:text("${text}")`);
         this.textLocator = (state: any) => page.locator(`//span/span[.="${state}"]`);
@@ -23,34 +20,8 @@ export class CommonMethodsPage {
         this.validationPage = (valPage: any) => page.locator(`//span[.='${valPage}']`)
         this.regionLocator = (role: string) => page.locator(`//div[@role='${role}']`);
         this.submitButton = page.locator('div[class*=mantine-Stack-root] > button[type=button]');
-        this.editExtracurricularButton = page.locator('//span[contains(@class, "mantine-Text-root") and text()="Extracurricular Activities"]/ancestor::div[contains(@class, "mantine-Group-root")]//a[contains(@class, "mantine-Button-root") and contains(.,"Edit")]');
-        this.editHighSchoolInfo = page.locator('//span[contains(@class, "mantine-Text-root") and text()="High School Information"]/ancestor::div[contains(@class, "mantine-Group-root")]//a[contains(@class, "mantine-Button-root") and contains(.,"Edit")]');
         this.submitBtn = page.locator('button[type="submit"]');
-        this.editEssayButton = page.locator('//span[contains(@class, "mantine-Text-root") and text()="Essay"]/ancestor::div[contains(@class, "mantine-Group-root")]//a[contains(@class, "mantine-Button-root") and contains(.,"Edit")]');
         this.fileUploaded = page.locator('div[class*=m_6d731127] > div[class*=mantine-Group-root]');
-    }
-
-    async navigateToTheApplicationPage(applicationPageUrl: string) {
-        await this.page.goto(applicationPageUrl, { waitUntil: 'load' });
-        await this.loginToApplyButton.click();
-    }
-
-    async registerNewUser(firstName: string, lastName: string, email: string, phone: string, password: string) {
-        await this.querySelector('Email Address').fill(email);
-        await this.nextButton.click();
-        await this.querySelector('First Name').fill(firstName);
-        await this.querySelector('Last Name').fill(lastName);
-        await this.typeSelector('tel').fill(phone);
-        await this.querySelector('Create a Password').fill(password);
-        await this.querySelector('I confirm that I am at least 13 years old').click();
-        await this.page.evaluate(() => {
-            const submitButton = document.querySelector('Submit') as HTMLButtonElement;
-            if (submitButton) {
-                submitButton.disabled = false;
-            }
-        });
-        await this.querySelector('Submit').click();
-        await expect(this.querySelector('Submit')).not.toBeVisible({ timeout: 50000 });
     }
 
     async beginNewApplication() {
@@ -201,9 +172,10 @@ export class CommonMethodsPage {
         await expect(this.textOption("Complete")).toBeVisible({ timeout: 50000 });
         const currentUrl = this.page.url();
         console.log("Current URL: ", currentUrl);
-        await expect(this.editExtracurricularButton).not.toBeVisible();
-        await expect(this.editHighSchoolInfo).not.toBeVisible();
-        await expect(this.editEssayButton).not.toBeVisible();
+        await expect(this.validationPage("Lets get to know you!")).not.toBeVisible();
+        await expect(this.validationPage("Extracurricular Activities")).not.toBeVisible();
+        await expect(this.validationPage("High School Information")).not.toBeVisible();
+        await expect(this.validationPage("Essay")).not.toBeVisible();
         await expect(this.submitBtn).not.toBeVisible();
     }
 }
